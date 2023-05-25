@@ -1,12 +1,12 @@
 # IoT Thermometer
 
-Wi-Fi temperature monitor using [NodeMCU](https://en.wikipedia.org/wiki/NodeMCU) (a [ESP8266](https://en.wikipedia.org/wiki/ESP8266) development board) to read temperature with a [BMP280](https://www.amazon.com/s?k=bmp280) and send it to a HTTP endpoint using PHP to log data.
+Wi-Fi weather station using [NodeMCU](https://en.wikipedia.org/wiki/NodeMCU) (a [ESP8266](https://en.wikipedia.org/wiki/ESP8266) development board) to read temperature and barometric pressure with a [BMP280](https://www.amazon.com/s?k=bmp280) and send it to a HTTP endpoint using PHP to log data.
 
 ## Live Data
 
 View the realtime dashboard for thermometers running at my house:
 
-* https://swharden.com/thermometer/
+* https://swharden.com/weather/
 
 ## Hardware
 

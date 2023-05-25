@@ -24,10 +24,18 @@ View the realtime dashboard for thermometers running at my house:
 
 ![](dev/graphics/bmp280.jpg)
 
-## Enclosure
+## Indoor Sensor
 
 ![](dev/graphics/v1-outside.jpg)
 ![](dev/graphics/v1-inside.jpg)
+
+## Attic Sensor
+![](dev/graphics/attic-far.jpg)
+![](dev/graphics/attic-close.jpg)
+
+## Outdoor Sensor
+
+(In development)
 
 ## Software
 * Microcontroller code (Arduino): [`src/firmware/`](src/firmware/)

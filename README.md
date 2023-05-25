@@ -24,6 +24,11 @@ View the realtime dashboard for thermometers running at my house:
 
 ![](dev/graphics/bmp280.jpg)
 
+## Enclosure
+
+![](dev/graphics/v1-outside.jpg)
+![](dev/graphics/v1-inside.jpg)
+
 ## Software
 * Microcontroller code (Arduino): [`src/firmware/`](src/firmware/)
 * HTTP backend (PHP): [`src/backend/`](src/backend/)

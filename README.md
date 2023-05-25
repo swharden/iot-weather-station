@@ -6,7 +6,7 @@ Wi-Fi temperature monitor using [NodeMCU](https://en.wikipedia.org/wiki/NodeMCU)
 
 View the realtime dashboard for thermometers running at my house:
 
-* https://swharden.com/temperature/
+* https://swharden.com/thermometer/
 
 ## Hardware
 
@@ -36,4 +36,4 @@ View the realtime dashboard for thermometers running at my house:
 
 ## Authors
 * Backend: Scott W Harden https://SWHarden.com
-* Frontend: Leah X Harden: https://LeahXinli.com
+* Frontend: Leah X Harden https://LeahXinli.com

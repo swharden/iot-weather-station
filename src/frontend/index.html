@@ -17,6 +17,13 @@ header("Cache-Control: no-cache");
     <div class="container my-4">
         <h1>IoT Weather Station</h1>
 
+        <div>
+            Indoor: <span id="indoor">?</span> ºF
+        </div>
+        <div>
+            Outdoor: <span id="outdoor">?</span> ºF
+        </div>
+
         <div class="my-5">
             <canvas id="myChart" class="w-100"></canvas>
         </div>
@@ -24,21 +31,39 @@ header("Cache-Control: no-cache");
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
     <script>
+        function tickLabel(epoch) {
+            date = new Date(parseInt(epoch) * 1000);
+            const hour = String(date.getHours());
+            const minute = String(date.getMinutes()).padStart(2, '0');
+            return hour + ":" + minute;
+        }
+
         function updateChart(raw) {
 
             const readings = raw.split("\n").map(x => x.split(",")).filter(x => x.length == 4);
-            const dates = readings.map(x => new Date(parseInt(x[0]) * 1000));
-            const readingNumbers = Array.from({ length: readings.length }, (x, i) => i / 60);
-            const sensorIDs = readings.map(x => x[1]);
-            const temperatures = readings.map(x => x[2]);
-            const pressures = readings.map(x => x[3]);
+
+            const indoorReadings = readings.filter(x => x[1] == "1");
+            const indoorTemperatures = indoorReadings.map(x => x[2]);
+            const indoorDates = indoorReadings.map(x => tickLabel(x[0]));
+            document.getElementById("indoor").innerText = indoorTemperatures[indoorTemperatures.length - 1];
+
+            const outdoorReadings = readings.filter(x => x[1] == "2");
+            const outdoorTemperatures = outdoorReadings.map(x => x[2]);
+            const outdoorDates = outdoorReadings.map(x => tickLabel(x[0]));
+            document.getElementById("outdoor").innerText = outdoorTemperatures[outdoorTemperatures.length - 1];
 
             const data = {
-                labels: dates,
+                labels: indoorDates,
                 datasets: [
                     {
                         label: 'Indoor',
-                        data: temperatures,
+                        data: indoorTemperatures,
+                        fill: false,
+                        tension: 0.1,
+                    },
+                    {
+                        label: 'Outdoor',
+                        data: outdoorTemperatures,
                         fill: false,
                         tension: 0.1,
                     }
@@ -55,22 +80,7 @@ header("Cache-Control: no-cache");
                             radius: 0
                         }
                     },
-                    plugins: {
-                        legend: {
-                            display: false,
-                        }
-                    },
                     scales: {
-                        x: {
-                            ticks: {
-                                callback: function (val, index) {
-                                    const hour = String(dates[index].getHours());
-                                    const minute = String(dates[index].getMinutes()).padStart(2, '0');
-                                    return hour + ":" + minute;
-                                },
-                                color: 'red',
-                            }
-                        },
                         y: {
                             title: {
                                 display: true,

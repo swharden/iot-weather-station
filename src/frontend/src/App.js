@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Front from './Pages/Front.js';
 
 
-
+import './Reset.css'// Import CSS reset
 import './App.css'; // Import the CSS file
 
 

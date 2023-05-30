@@ -12,10 +12,12 @@ import Sidebar from './Pages/Sidebar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <React.StrictMode >
+    <div className='row'>
 
-    <Sidebar />
-    <App />
+      <Sidebar />
+      <App />
+    </div>
 
   </React.StrictMode>
 );

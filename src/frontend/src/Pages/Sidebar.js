@@ -2,7 +2,7 @@
 
 function Sidebar() {
     return (
-        <div className="sidebar">
+        <div className="sidebar Montserrat">
 
             <ul>
                 <li>Day</li>

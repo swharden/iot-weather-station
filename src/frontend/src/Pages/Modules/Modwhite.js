@@ -1,10 +1,10 @@
 
 
-function Modwhite(content) {
+function Modwhite({ content }) {
     return (
         <div className="whiteCard" >
 
-            content
+            {content}
         </div>
     )
 }

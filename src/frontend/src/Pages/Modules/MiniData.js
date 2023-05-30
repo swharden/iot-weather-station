@@ -3,16 +3,22 @@
 import Arrow from './Arrow'
 
 
-function MiniData(title, color, data, diff) {
+
+function MiniData({ texts }) {
     return (
         <div>
-            <h2>{title}</h2>
-            <div>
-                <h1 style={{ color: color }}>{data}</h1>
-                <Arrow />
-                <h1>{diff}</h1>
-            </div>
+            {texts.map((item) => (
+                <div key={item.title}>
+                    <h2>{item.title}</h2>
+                    <div>
+                        <h1 style={{ color: item.color }}>{item.data}</h1>
+                        <Arrow />
+                        <h1>{item.diff}</h1>
+                    </div>
+                </div>
+            ))}
         </div>
-    )
+    );
 }
+
 export default MiniData;

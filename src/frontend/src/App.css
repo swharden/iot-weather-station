@@ -33,17 +33,21 @@
 
 /* sidebar */
 
+
+/* Front */
 .bigGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
   margin: 40px;
 }
+
 
 
 .title {
   grid-column: 1/4;
   font-size: 32px;
+  padding: 15px;
 
 }
 
@@ -54,3 +58,5 @@
   border: none;
   border-radius: 15px;
 }
+
+/* Front */

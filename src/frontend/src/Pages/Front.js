@@ -5,9 +5,9 @@
 
 function Front() {
     return (
-        <div>
+        <div className="bigGrid">
 
-            <h2>Weather Station</h2>
+            <h2 className="title">Weather Station</h2>
             <div>
 
             </div>

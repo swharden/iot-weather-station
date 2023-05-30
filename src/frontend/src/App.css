@@ -3,7 +3,12 @@
 }
 
 :root {
-  --dark: #1E1E1E;
+  --black: black;
+  --grey: #3D3D3D;
+  --light: white;
+  --one: #237490;
+  --two: #D68233;
+  --three: #D14765;
 
 
 }
@@ -15,12 +20,25 @@
 
 
 .sidebar {
-  color: ;
+  background-color: var(--grey);
+  color: var(--light);
+
 }
 
 /* sidebar */
 
+.bigGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+
+.title {}
+
+
 .whiteCard {
   background-color: white;
   box-shadow: 5px 5px 2px 1px grey;
+  border: none;
+  border-radius: 15px;
 }

@@ -18,6 +18,10 @@
 
 /* sidebar */
 
+.row {
+  display: grid;
+  grid-column: 1;
+}
 
 .sidebar {
   background-color: var(--grey);
@@ -25,15 +29,23 @@
 
 }
 
+
+
 /* sidebar */
 
 .bigGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin: 40px;
 }
 
 
-.title {}
+.title {
+  grid-column: 1/4;
+  font-size: 32px;
+
+}
 
 
 .whiteCard {

@@ -1,6 +1,6 @@
 
 
-import Arrow from './Arrows/RedDown'
+import Arrow from './Arrows/index.js'
 
 
 
@@ -12,7 +12,8 @@ function MiniData({ texts }) {
                     <h2>{item.title}</h2>
                     <div>
                         <h1 style={{ color: item.color }}>{item.data}</h1>
-                        <Arrow />
+
+                        <img src={<Arrow text={item} />} />
                         <h1>{item.diff}</h1>
                     </div>
                 </div>

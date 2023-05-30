@@ -1,6 +1,6 @@
 
 
-import miniData from './Modules/MiniData.js'
+import miniData from './Modules/MiniData/MiniData.js'
 
 import Modwhite from './Modules/Modwhite.js'
 

@@ -30,12 +30,14 @@ View the realtime dashboard for thermometers running at my house:
 ![](dev/graphics/v1-inside.jpg)
 
 ## Attic Sensor
-![](dev/graphics/attic-far.jpg)
-![](dev/graphics/attic-close.jpg)
+![](dev/graphics/attic1.jpg)
+![](dev/graphics/attic2.jpg)
 
 ## Outdoor Sensor
 
-(In development)
+![](dev/graphics/outdoor1.jpg)
+![](dev/graphics/outdoor2.jpg)
+![](dev/graphics/outdoor3.jpg)
 
 ## Software
 * Microcontroller code (Arduino): [`src/firmware/`](src/firmware/)

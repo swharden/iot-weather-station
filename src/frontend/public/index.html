@@ -18,7 +18,6 @@
 </head>
 
 
-
 <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
@@ -31,45 +30,46 @@
 
 
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js">  </script>
 
     <!-- <body>
-    <div class="container my-4">
-        <h1>IoT Weather Station</h1>
-
-        <div class='mb-3'>
-            <a href='https://github.com/swharden/iot-weather-station' class=''>
-                https://github.com/swharden/iot-weather-station
-            </a>
-        </div>
-
-        <div>
-            Indoor: <span id="indoor">Loading...</span> ºF
-        </div>
-        <div>
-            Outdoor: <span id="outdoor">Loading...</span> ºF
-        </div>
-        <div>
-            Attic: <span id="attic">Loading...</span> ºF
-        </div>
-        <div>
-            Pressure: <span id="pressure">Loading...</span> PSI
-        </div>
-
+        <div class="container my-4">
+            <h1>IoT Weather Station</h1>
+            
+            <div class='mb-3'>
+                <a href='https://github.com/swharden/iot-weather-station' class=''>
+                    https://github.com/swharden/iot-weather-station
+                </a>
+            </div>
+            
+            <div>
+                Indoor: <span id="indoor">Loading...</span> ºF
+            </div>
+            <div>
+                Outdoor: <span id="outdoor">Loading...</span> ºF
+            </div>
+            <div>
+                Attic: <span id="attic">Loading...</span> ºF
+            </div>
+            <div>
+                Pressure: <span id="pressure">Loading...</span> PSI
+            </div>
+            
         <div class="my-5">
             <canvas id="myChart" class="w-100"></canvas>
         </div>
-
+        
         <div class="my-5">
             <h3>Indoor</h3>
             <canvas id="indoorChart" class="w-100"></canvas>
         </div>
-
-
+        
+        
         <div class="my-5">
             <h3>Outdoor</h3>
             <canvas id="outdoorChart" class="w-100"></canvas>
         </div>
-
+        
         <div class="my-5">
             <h3>Attic</h3>
             <canvas id="atticChart" class="w-100"></canvas>
@@ -81,8 +81,8 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
-    <script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></>
+<script>
         function tickLabel(epoch) {
             date = new Date(parseInt(epoch) * 1000);
             const hourNumber = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();

@@ -1,6 +1,8 @@
 <?php
 
-include "../key.php";
+header("Content-Type: text/plain");
+
+include "../../key.php";
 
 function get_post_data()
 {
@@ -24,20 +26,49 @@ function get_post_data()
     return $data;
 }
 
-function record_data($data)
+function store_csv($timestamp, $sensor, $temperature, $pressure)
 {
-    $time = time();
-    $sensor = $data['sensor'];
-    $temperature = $data['temperature'];
-    $pressure = $data['pressure'];
-
     $file = '../log.txt';
-    $line = "$time,$sensor,$temperature,$pressure\n";
+    $line = "$timestamp,$sensor,$temperature,$pressure\n";
     file_put_contents($file, $line, FILE_APPEND | LOCK_EX);
+}
 
-    $time = date("Y-m-d h:m:s");
-    echo "[$time] logged: {$line}";
+function store_db($timestamp, $sensor, $temperature, $pressure)
+{
+	
+	// connect
+	$db = new SQLite3('weather.db');
+
+	// setup table
+	$query = "CREATE TABLE IF NOT EXISTS readings (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		timestamp INTEGER,
+		sensor INTEGER,
+		temperature INTEGER,
+		pressure INTEGER
+	)";
+	$db->exec($query);
+
+	// make record
+    $timestamp = time();
+	$sensor = intval($sensor);
+	$temperature = intval($temperature * 100);
+	$pressure = intval($pressure);
+	$query = "INSERT INTO readings (timestamp, sensor, temperature, pressure) " . 
+		"VALUES ($timestamp, $sensor, $temperature, $pressure)";
+	$db->exec($query);
+
+	// disconnect
+	$db->close();	
 }
 
 $data = get_post_data();
-record_data($data);
+$timestamp = time();
+$sensor = $data['sensor'];
+$temperature = $data['temperature'];
+$pressure = $data['pressure'];
+
+store_csv($timestamp, $sensor, $temperature, $pressure);
+store_db($timestamp, $sensor, $temperature, $pressure);
+
+echo "[$timestamp] Success";

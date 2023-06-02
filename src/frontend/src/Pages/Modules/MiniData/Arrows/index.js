@@ -5,14 +5,14 @@
 function Arrow({ text }) {
     if (text.type === 'right') {
         if (text.value === true) {
-            return './Arrows/GreenUp.png'
+            return <img src='./Arrows/GreenUp.png' alt='a green arrow going up' />
         } else {
-            return './Arrows/RedDown.png'
+            return <img src='./Arrows/RedDown.png' alt='a red arrow going down' />
         }
     } else if (text.value === true) {
-        return './Arrows/GreenDown.png', alt = 'a green arrow going down'
+        return <img src='./Arrows/GreenDown.png' alt='a green arrow going down' />
     } else {
-        return './Arrows/RedUp.png'
+        return <img src='./Arrows/RedUp.png' alt='a red arrow going up' />
     }
 
 }

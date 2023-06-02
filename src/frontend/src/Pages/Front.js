@@ -10,13 +10,16 @@ function Front() {
     return (
         <div>
             {/* <img src={background} alt="A soft blue,white and purple gradient" /> */}
+
+
             <div className="bigGrid Montserrat">
 
                 <h2 className="title">Weather Station:</h2>
                 <div>
-                    <Modwhite content={miniData} />
+                    <Modwhite content={miniData.Text.AC} />
                 </div>
                 <h2 className="title">Inside:</h2>
+                <Modwhite content={miniData.Text.Attic} />
                 <div>
 
                 </div>

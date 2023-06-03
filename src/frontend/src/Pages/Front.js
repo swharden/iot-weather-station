@@ -1,6 +1,6 @@
 
 
-import miniData from './Modules/MiniData/MiniData.js'
+import { Attic } from './Modules/MiniData/MiniData.js'
 
 import Modwhite from './Modules/Modwhite.js'
 
@@ -19,7 +19,7 @@ function Front() {
 
                 <h2 className="title">Weather Station:</h2>
                 <div>
-                    <Modwhite content={miniData} />
+                    <Modwhite />
                 </div>
                 <h2 className="title">Inside:</h2>
                 <Modwhite />

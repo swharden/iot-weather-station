@@ -9,7 +9,7 @@ function MiniData({ texts }) {
         <div>
             {texts.map((item) => (
                 <div key={item.title}>
-                    <h2>{item.title}</h2>
+                    <h2>{item.title}Attic</h2>
                     <div>
                         <h1 style={{ color: item.color }}>{item.data}</h1>
 

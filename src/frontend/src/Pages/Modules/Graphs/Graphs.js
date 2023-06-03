@@ -98,15 +98,10 @@ function Graphs() {
             <canvas id="myChart" class="w-100"></canvas>
 
 
-
             <canvas id="indoorChart" class="w-100"></canvas>
 
 
-
-
-
             <canvas id="outdoorChart" class="w-100"></canvas>
-
 
 
 

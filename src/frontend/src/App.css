@@ -16,17 +16,56 @@
 /* All color are WCAG AAA:Pass !
 */
 
+
+/* Frontdiv */
+
+.Frontdiv {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+
+}
+
+
+/* Frontdiv */
 /* sidebar */
 
 .row {
   display: grid;
   grid-column: 1;
+
 }
 
 .sidebar {
   background-color: var(--grey);
   color: var(--light);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.sidebarImg {
+
+  background-color: aliceblue;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.sidebarUl {
+  padding: 20px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.sidebarLi {
+  margin: 20px;
 }
 
 
@@ -40,6 +79,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1.5rem;
   margin: 40px;
+  grid-column: 2/5;
 }
 
 

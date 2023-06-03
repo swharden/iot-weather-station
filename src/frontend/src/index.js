@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 
 // inports of parts 
 import App from './App';
-import Sidebar from './Pages/Sidebar';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,7 +15,7 @@ root.render(
   <React.StrictMode >
     <div className='row'>
 
-      <Sidebar />
+
       <App />
     </div>
 

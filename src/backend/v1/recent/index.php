@@ -3,7 +3,8 @@ header("Cache-Control: no-cache");
 header("Content-Type: text/plain");
 header("Access-Control-Allow-Origin: *");
 
-function getReadings($db, $sensor, $hours){
+function getReadings($db, $sensor, $hours)
+{
 	$timestampStart = time() - $hours * 60 * 60;
 	$query = "SELECT * from readings WHERE sensor == $sensor AND timestamp > $timestampStart";
 
@@ -12,14 +13,14 @@ function getReadings($db, $sensor, $hours){
 	$readings["timestamps"] = [];
 	$readings["temperatures"] = [];
 	$readings["pressures"] = [];
-	
+
 	$results = $db->query($query);
 	while ($row = $results->fetchArray()) {
 		$readings["timestamps"][] = $row["timestamp"];
-		$readings["temperatures"][] = $row["temperature"];
-		$readings["pressures"][] = $row["pressure"];
+		$readings["temperatures"][] = $row["temperature"] / 100;
+		$readings["pressures"][] = $row["pressure"] / 256 / 6894.76;
 	}
-	
+
 	return $readings;
 }
 

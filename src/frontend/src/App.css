@@ -100,3 +100,25 @@
 }
 
 /* Front */
+
+/* MiniData */
+
+.mdTitle {
+  font-size: 28px;
+
+}
+
+.mdRow {
+  display: flex;
+}
+
+
+.vr {
+  width: 7px;
+}
+
+.mdData {
+  font-size: 28px;
+}
+
+/* MiniData */

@@ -16,6 +16,15 @@
 /* All color are WCAG AAA:Pass !
 */
 
+.background {
+  background-image: url('/public/photos/background.jpg');
+}
+
+
+
+
+
+
 
 /* Frontdiv */
 
@@ -100,3 +109,35 @@
 }
 
 /* Front */
+
+/* MiniData */
+
+.mdTitle {
+  font-size: 32px;
+  margin: 10px;
+
+}
+
+.mdRow {
+  display: flex;
+}
+
+
+.vr {
+  height: 40px;
+  width: 5px;
+  margin: 0px 15px 0px 15px
+}
+
+.mdData {
+  font-size: 32px;
+
+}
+
+.arrow {
+  width: 35px;
+  height: 40px;
+  margin: 5px;
+}
+
+/* MiniData */

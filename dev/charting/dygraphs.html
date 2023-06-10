@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script type="text/javascript" src="https://swharden.com/static/charting/dygraph-2.2.1/dygraph.js"></script>
+    <link rel="stylesheet" type="text/css" src="https://swharden.com/static/charting/dygraph-2.2.1/dygraph.css" />
+    <style>
+        .dygraph-ylabel {
+            font-weight: bold;
+            transform: rotate(-90deg);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-4">
+        <div class="text-center">
+            <h1 class="mt-5">Weather Station</h1>
+            <div id="allTemp" style="width:500px; height:300px;" class="mx-auto"></div>
+
+            <h1 class="mt-5">Indoor</h1>
+            <div id="indoorTemp" style="width:500px; height:300px;" class="mx-auto"></div>
+
+            <h1 class="mt-5">Outdoor</h1>
+            <div id="outdoorTemp" style="width:500px; height:300px;" class="mx-auto"></div>
+
+            <h1 class="mt-5">Attic</h1>
+            <div id="atticTemp" style="width:500px; height:300px;" class="mx-auto"></div>
+
+            <h1 class="mt-5">Pressure</h1>
+            <div id="outdoorPressure" style="width:500px; height:300px;" class="mx-auto"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        function tickLabel(epoch) {
+            date = new Date(parseInt(epoch) * 1000);
+            return date;
+        }
+
+        function updateChart(readings) {
+
+            const indoorTemperatures = readings.indoor.temperatures;
+            const indoorDates = readings.indoor.timestamps.map(x => tickLabel(x));
+
+            const outdoorTemperatures = readings.outdoor.temperatures;
+            const outdoorPressures = readings.outdoor.pressures;
+            const outdoorDates = readings.outdoor.timestamps.map(x => tickLabel(x));
+
+            const atticTemperatures = readings.attic.temperatures;
+            const atticDates = readings.attic.timestamps.map(x => tickLabel(x));
+
+            Dygraph.onDOMready(function onDOMready() {
+                g = new Dygraph(
+                    document.getElementById("allTemp"),
+                    atticDates.map((x, i) =>
+                        [
+                            atticDates[i],
+                            outdoorTemperatures[i],
+                            indoorTemperatures[i],
+                            atticTemperatures[i]
+                        ]),
+                    {
+                        labels: ["Date", "Outdoor", "Indoor", "Attic"],
+                        ylabel: 'Temperature (F)',
+                        colors: ['red', 'blue', 'orange'],
+                    });
+            });
+
+            Dygraph.onDOMready(function onDOMready() {
+                g = new Dygraph(
+                    document.getElementById("indoorTemp"),
+                    indoorDates.map((x, i) =>
+                        [
+                            indoorDates[i],
+                            indoorTemperatures[i],
+                        ]),
+                    {
+                        ylabel: 'Temperature (F)',
+                        colors: ['blue'],
+                    });
+            });
+
+            Dygraph.onDOMready(function onDOMready() {
+                g = new Dygraph(
+                    document.getElementById("outdoorTemp"),
+                    outdoorDates.map((x, i) =>
+                        [
+                            outdoorDates[i],
+                            outdoorTemperatures[i],
+                        ]),
+                    {
+                        ylabel: 'Temperature (F)',
+                        colors: ['red'],
+                    });
+            });
+
+            Dygraph.onDOMready(function onDOMready() {
+                g = new Dygraph(
+                    document.getElementById("atticTemp"),
+                    atticDates.map((x, i) =>
+                        [
+                            atticDates[i],
+                            atticTemperatures[i],
+                        ]),
+                    {
+                        ylabel: 'Temperature (F)',
+                        colors: ['orange'],
+                    });
+            });
+
+            Dygraph.onDOMready(function onDOMready() {
+                g = new Dygraph(
+                    document.getElementById("outdoorPressure"),
+                    outdoorDates.map((x, i) =>
+                        [
+                            outdoorDates[i],
+                            outdoorPressures[i],
+                        ]),
+                    {
+                        ylabel: 'Pressure (PSI)',
+                        colors: ['black'],
+                    });
+            });
+        }
+
+        function loadData(hours = 999999) {
+            fetch(`https://swharden.com/weather/v1/recent/?hours=${hours}`, { cache: "no-store" })
+                .then(response => response.json())
+                .then(data => updateChart(data));
+        }
+
+        loadData(24 * 7);
+
+    </script>
+
+</body>
+
+</html>

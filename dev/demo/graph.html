@@ -7,6 +7,8 @@
     <title>IoT Weather Station</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script type="text/javascript" src="https://unpkg.com/dygraphs@2.2.1/dist/dygraph.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/dygraphs@2.2.1/dist/dygraph.min.css" />
     <style>
         a {
             text-decoration: none;
@@ -19,209 +21,151 @@
 </head>
 
 <body>
-    <div class="container my-4">
-        <h1>IoT Weather Station</h1>
+    <div class="container my-5">
+        <div class="text-center">
 
-        <div class='mb-3'>
-            <a href='https://github.com/swharden/iot-weather-station' class=''>
-                https://github.com/swharden/iot-weather-station
-            </a>
-        </div>
+            <h1 class="mt-5">IoT Weather Station</h1>
 
-        <div>
-            Indoor: <span id="indoor">Loading...</span> ºF
-        </div>
-        <div>
-            Outdoor: <span id="outdoor">Loading...</span> ºF
-        </div>
-        <div>
-            Attic: <span id="attic">Loading...</span> ºF
-        </div>
-        <div>
-            Pressure: <span id="pressure">Loading...</span> PSI
-        </div>
+            <div class="mb-4">
+                <a href="https://github.com/swharden/iot-weather-station">github.com/swharden/iot-weather-station</a>
+            </div>
 
-        <div class="d-flex justify-content-around my-5">
-            <button class="btn btn-primary" onclick="loadData(1);">Hour</button>
-            <button class="btn btn-primary" onclick="loadData(24);">Day</button>
-            <button class="btn btn-primary" onclick="loadData();">All</button>
-        </div>
+            <div class="d-flex justify-content-around my-5">
+                <button class="btn btn-primary" onclick="loadData(1)">Hour</button>
+                <button class="btn btn-primary" onclick="loadData(6)">Quarter</button>
+                <button class="btn btn-primary" onclick="loadData(24)">Day</button>
+                <button class="btn btn-primary" onclick="loadData(24*7)">Week</button>
+                <button class="btn btn-primary" onclick="loadData()">All</button>
+            </div>
 
-        <div class="my-5">
-            <h3 id="timespan">Loading...</h3>
-            <canvas id="myChart" class="w-100"></canvas>
-        </div>
+            <div id="allTemp" class="w-100" style="height: 300px"></div>
 
-        <div class="my-5">
-            <h3>Indoor</h3>
-            <canvas id="indoorChart" class="w-100"></canvas>
-        </div>
+            <h2 class="mt-5">Indoor: <span id="indoor">Loading...</span> ºF</h2>
+            <div id="indoorTemp" class="w-100" style="height: 300px"></div>
 
+            <h2 class="mt-5">Outdoor: <span id="outdoor">Loading...</span> ºF</h2>
+            <div id="outdoorTemp" class="w-100" style="height: 300px"></div>
 
-        <div class="my-5">
-            <h3>Outdoor</h3>
-            <canvas id="outdoorChart" class="w-100"></canvas>
-        </div>
+            <h2 class="mt-5">Attic: <span id="attic">Loading...</span> ºF</h2>
+            <div id="atticTemp" class="w-100" style="height: 300px"></div>
 
-        <div class="my-5">
-            <h3>Attic</h3>
-            <canvas id="atticChart" class="w-100"></canvas>
-        </div>
-
-        <div class="my-5">
-            <h3>Pressure</h3>
-            <canvas id="pressureChart" class="w-100"></canvas>
+            <h2 class="mt-5">Pressure: <span id="pressure">Loading...</span> PSI</h2>
+            <div id="outdoorPressure" class="w-100" style="height: 300px"></div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
-    <script>
-
-        const charts = [];
+    <script type="text/javascript">
 
         function tickLabel(epoch) {
             date = new Date(parseInt(epoch) * 1000);
-            const hourNumber = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
-            const hour = String(hourNumber);
-            const minute = String(date.getMinutes()).padStart(2, '0');
-            const ampm = date.getHours() > 12 ? "pm" : "am";
-            return hour + ":" + minute + " " + ampm;
-        }
-
-        function updateChart2(chartID, dates, values, axisLabel, borderColor = "#36A2EB") {
-            const data = {
-                labels: dates,
-                datasets: [
-                    {
-                        label: 'Indoor',
-                        data: values,
-                        borderColor: borderColor,
-                        fill: false,
-                        tension: 0.1,
-                    }
-                ]
-            };
-
-            const config = {
-                type: 'line',
-                data: data,
-                options: {
-                    responsive: false,
-                    plugins: {
-                        legend: {
-                            display: false,
-                        },
-                    },
-                    elements: {
-                        point: {
-                            radius: 0
-                        }
-                    },
-                    scales: {
-                        y: {
-                            title: {
-                                display: true,
-                                text: axisLabel
-                            }
-                        }
-                    },
-                }
-            };
-
-            const chart = new Chart(document.getElementById(chartID), config);
-            chart.resize();
-            charts.push(chart)
+            return date;
         }
 
         function updateChart(readings) {
 
             const indoorTemperatures = readings.indoor.temperatures;
             const indoorDates = readings.indoor.timestamps.map(x => tickLabel(x));
-            document.getElementById("indoor").innerText = indoorTemperatures[indoorTemperatures.length - 1];
-            updateChart2("indoorChart", indoorDates, indoorTemperatures, "Temperature (F)", "#36a2eb");
 
             const outdoorTemperatures = readings.outdoor.temperatures;
             const outdoorPressures = readings.outdoor.pressures;
             const outdoorDates = readings.outdoor.timestamps.map(x => tickLabel(x));
-            document.getElementById("outdoor").innerText = outdoorTemperatures[outdoorTemperatures.length - 1];
-            document.getElementById("pressure").innerText = Math.round(outdoorPressures[outdoorPressures.length - 1] * 1000) / 1000;
-            updateChart2("outdoorChart", outdoorDates, outdoorTemperatures, "Temperature (F)", "#ff6384");
-            updateChart2("pressureChart", outdoorDates, outdoorPressures, "Pressure (PSI)", "#000000");
 
             const atticTemperatures = readings.attic.temperatures;
             const atticDates = readings.attic.timestamps.map(x => tickLabel(x));
-            document.getElementById("attic").innerText = atticTemperatures[atticTemperatures.length - 1];
-            updateChart2("atticChart", atticDates, atticTemperatures, "Temperature (F)", "#ff9f40");
 
-            const data = {
-                labels: indoorDates,
-                datasets: [
+            Dygraph.onDOMready(function onDOMready() {
+                g = new Dygraph(
+                    document.getElementById("allTemp"),
+                    atticDates.map((x, i) =>
+                        [
+                            atticDates[i],
+                            outdoorTemperatures[i],
+                            indoorTemperatures[i],
+                            atticTemperatures[i]
+                        ]),
                     {
-                        label: 'Indoor',
-                        data: indoorTemperatures,
-                        fill: false,
-                        tension: 0.1,
-                    },
-                    {
-                        label: 'Outdoor',
-                        data: outdoorTemperatures,
-                        fill: false,
-                        tension: 0.1,
-                    },
-                    {
-                        label: 'Attic',
-                        data: atticTemperatures,
-                        fill: false,
-                        tension: 0.1,
-                    }
-                ]
-            };
+                        labels: ["Date", "Outdoor", "Indoor", "Attic"],
+                        ylabel: 'Temperature (F)',
+                        colors: ['red', 'blue', 'orange'],
+                    });
+            });
 
-            const config = {
-                type: 'line',
-                data: data,
-                options: {
-                    responsive: false,
-                    elements: {
-                        point: {
-                            radius: 0
-                        }
-                    },
-                    scales: {
-                        y: {
-                            title: {
-                                display: true,
-                                text: "Temperature (F)"
-                            }
-                        }
-                    },
-                }
-            };
+            Dygraph.onDOMready(function onDOMready() {
+                g = new Dygraph(
+                    document.getElementById("indoorTemp"),
+                    indoorDates.map((x, i) =>
+                        [
+                            indoorDates[i],
+                            indoorTemperatures[i],
+                        ]),
+                    {
+                        ylabel: 'Temperature (F)',
+                        colors: ['blue'],
+                    });
+            });
 
-            const chart = new Chart(document.getElementById("myChart"), config);
-            chart.resize();
-            charts.push(chart);
+            Dygraph.onDOMready(function onDOMready() {
+                g = new Dygraph(
+                    document.getElementById("outdoorTemp"),
+                    outdoorDates.map((x, i) =>
+                        [
+                            outdoorDates[i],
+                            outdoorTemperatures[i],
+                        ]),
+                    {
+                        ylabel: 'Temperature (F)',
+                        colors: ['red'],
+                    });
+            });
+
+            Dygraph.onDOMready(function onDOMready() {
+                g = new Dygraph(
+                    document.getElementById("atticTemp"),
+                    atticDates.map((x, i) =>
+                        [
+                            atticDates[i],
+                            atticTemperatures[i],
+                        ]),
+                    {
+                        ylabel: 'Temperature (F)',
+                        colors: ['orange'],
+                    });
+            });
+
+            Dygraph.onDOMready(function onDOMready() {
+                g = new Dygraph(
+                    document.getElementById("outdoorPressure"),
+                    outdoorDates.map((x, i) =>
+                        [
+                            outdoorDates[i],
+                            outdoorPressures[i],
+                        ]),
+                    {
+                        ylabel: 'Pressure (PSI)',
+                        colors: ['black'],
+                    });
+            });
         }
 
         function loadData(hours = 999999) {
-            charts.forEach(x => x.destroy());
             fetch(`https://swharden.com/weather/v1/recent/?hours=${hours}`, { cache: "no-store" })
                 .then(response => response.json())
+                .then(data => updateChart(data));
+
+            fetch("https://swharden.com/weather/v1/current/", { cache: "no-store" })
+                .then(response => response.json())
                 .then(data => {
-                    updateChart(data);
-                    if (hours <= 1) {
-                        document.getElementById("timespan").innerText = `Data for last hour`;
-                    } else if (hours >= 999999) {
-                        document.getElementById("timespan").innerText = `Data for all time`;
-                    } else {
-                        document.getElementById("timespan").innerText = `Data for last ${hours} hours`;
-                    }
-                })
+                    document.getElementById("indoor").innerText = data.indoor.temperature;
+                    document.getElementById("outdoor").innerText = data.outdoor.temperature;
+                    document.getElementById("attic").innerText = data.attic.temperature;
+                    document.getElementById("pressure").innerText = data.outdoor.pressure;
+                });
         }
 
         loadData(24);
 
     </script>
+
 </body>
 
 </html>

@@ -1,0 +1,1 @@
+These files demonstrate how to interact with the latest weather API

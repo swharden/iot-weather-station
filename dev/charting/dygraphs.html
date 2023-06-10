@@ -30,6 +30,13 @@
                 <a href="https://github.com/swharden/iot-weather-station">github.com/swharden/iot-weather-station</a>
             </div>
 
+            <div class="d-flex justify-content-around my-5">
+                <button class="btn btn-primary" onclick="loadData(1)">Hour</button>
+                <button class="btn btn-primary" onclick="loadData(6)">Quarter</button>
+                <button class="btn btn-primary" onclick="loadData(24)">Day</button>
+                <button class="btn btn-primary" onclick="loadData(24*7)">Week</button>
+                <button class="btn btn-primary" onclick="loadData()">All</button>
+            </div>
 
             <div id="allTemp" class="w-100" style="height: 300px"></div>
 
@@ -155,7 +162,7 @@
                 });
         }
 
-        loadData(24 * 7);
+        loadData(24);
 
     </script>
 

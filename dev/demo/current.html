@@ -13,27 +13,27 @@
     <div class="container my-4">
         <h1>Current Readings</h1>
 
-<div>
-    Indoor: <span id="indoor">Loading...</span> ºF
-</div>
-<div>
-    Outdoor: <span id="outdoor">Loading...</span> ºF
-</div>
-<div>
-    Attic: <span id="attic">Loading...</span> ºF
-</div>
+        <div>
+            Indoor: <span id="indoor">Loading...</span> ºF
+        </div>
+        <div>
+            Outdoor: <span id="outdoor">Loading...</span> ºF
+        </div>
+        <div>
+            Attic: <span id="attic">Loading...</span> ºF
+        </div>
 
     </div>
 
-<script>
-    fetch("https://swharden.com/weather/v1/current/", { cache: "no-store" })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("indoor").innerText = data.indoor.temperature;
-            document.getElementById("outdoor").innerText = data.outdoor.temperature;
-            document.getElementById("attic").innerText = data.attic.temperature;
-        });
-</script>
+    <script>
+        fetch("https://swharden.com/weather/v1/current/", { cache: "no-store" })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("indoor").innerText = data.indoor.temperature;
+                document.getElementById("outdoor").innerText = data.outdoor.temperature;
+                document.getElementById("attic").innerText = data.attic.temperature;
+            });
+    </script>
 </body>
 
 </html>

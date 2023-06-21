@@ -110,6 +110,21 @@
 
 /* Front */
 
+/* allGraph */
+
+
+.allGraphBox {
+  grid-column: 1/2;
+}
+
+.allGraph {
+  grid-column: 1/2;
+}
+
+
+
+
+
 /* MiniData */
 
 .mdTitle {

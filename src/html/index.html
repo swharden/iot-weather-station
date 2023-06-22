@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <title>Document</title>
+</head>
+
+<body class="bodyBackground">
+    <div class="container my-4">
+        <h1 class="headerTitle">Current Readings</h1>
+
+        <div class="TempRow">
+            <div class="TombTemp">
+
+                <div class="circleTemp colorRed">
+
+                    <h2><span id="indoor">Loading...</span>ºF</h2>
+                </div>
+                <h3>
+                    Indoor
+                </h3>
+            </div>
+            <div class="TombTemp">
+                <div class="circleTemp colorGreen">
+                    <h2><span id="outdoor">Loading...</span> ºF</h2>
+                </div>
+                <h3>
+                    Outdoor
+                </h3>
+            </div>
+            <div class="TombTemp">
+                <div class="circleTemp colorBlue">
+                    <h2> <span id="attic">Loading...</span> ºF</h2>
+                </div>
+                <h3>
+                    Attic
+                </h3>
+
+            </div>
+        </div>
+        <div class="quoteRow">
+
+            <blockquote class="quoteTemp">“It is cold outside open a window”</blockquote>
+            <div class="ImgCircleSmall"></div>
+            <div class="circleTemp ImgCircle">
+                <img class="Img" src="./photos/rainy-day.png">
+            </div>
+
+
+        </div>
+
+        <script>
+            fetch("https://swharden.com/weather/v1/current/", { cache: "no-store" })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("indoor").innerText = data.indoor.temperature;
+                    document.getElementById("outdoor").innerText = data.outdoor.temperature;
+                    document.getElementById("attic").innerText = data.attic.temperature;
+                });
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+/*
+    Base 
+*/
+:root {
+
+    --colorGard2: #FBFFFF;
+    --colorGard1: #BFD8E2;
+    --colorthr: #10AC90;
+    --colortwo: #44A124;
+    --colorone: #BB3D15;
+    --colorDarkGrad2: #BB3D15;
+    --colorDarkGrad1: #BB3D15;
+    --offblack: #070939;
+}
+
+
+.colorBlue {
+    background-color: var(--colorthr);
+}
+
+.colorGreen {
+    background-color: var(--colortwo);
+}
+
+.colorRed {
+    background-color: var(--colorone);
+}
+
+.bodyBackground {
+    background-image: linear-gradient(to bottom right, #FBFFFF, #BFD8E2);
+    font-family: 'Quicksand', sans-serif;
+    color: var(--offblack);
+}
+
+.headerTitle {
+    display: flex;
+    font-size: 36px;
+    justify-content: center;
+    margin: 50px;
+
+}
+
+.TempRow {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+
+}
+
+/* Media Query for screens smaller than 600px */
+@media (max-width: 1250px) {
+    .TempRow {
+        align-items: center;
+        flex-direction: column;
+        font-size: 20px;
+    }
+}
+
+
+
+
+.circleTemp {
+    height: 200px;
+    width: 200px;
+
+    border-radius: 50%;
+    border: white 10px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.TombTemp {
+    background: linear-gradient(to bottom, #6A6884, #484759);
+    padding: 50px;
+    max-width: 230px;
+    max-height: 300px;
+    border: white 5px solid;
+    border-radius: 40% 40% 0% 0%;
+    margin: 20px;
+    box-shadow: #64646d 10px 10px 15px;
+}
+
+.quoteRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--offblack);
+    margin: 50px;
+}
+
+
+.quoteTemp {
+    font-size: 28px;
+}
+
+.ImgCircle {
+    height: 250px;
+    width: 250px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: #767689 10px 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.ImgCircleSmall {
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: #767689 10px 10px 15px;
+    border-radius: 50%;
+    display: flex;
+    align-self: end;
+
+}
+
+@media (max-width: 1250px) {
+    .quoteRow {
+        align-items: center;
+        flex-direction: column;
+        font-size: 20px;
+    }
+
+    .ImgCircleSmall {
+        align-self: center;
+        margin: 20px;
+    }
+}
+
+
+
+.Img {
+
+    height: 200px;
+    width: 200px;
+}

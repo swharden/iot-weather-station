@@ -8,6 +8,12 @@ import MiniData from './Modules/MiniData/MiniData.js'
 import Sidebar from './Sidebar';
 
 
+//Graphs
+
+import AllGraph from './Modules/Graphs/AllGraph.js'
+
+
+
 //hard coded data
 
 const AC = [
@@ -46,6 +52,8 @@ function Front() {
             <div className="bigGrid Montserrat">
 
                 <h2 className="title">Weather Station:</h2>
+
+                <AllGraph />
                 <MiniData texts={AC} />
                 <MiniData texts={Attic} />
                 <div>

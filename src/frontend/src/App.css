@@ -85,10 +85,10 @@
 /* Front */
 .bigGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 200px);
   gap: 1.5rem;
   margin: 40px;
-  grid-column: 2/5;
+
 }
 
 
@@ -109,6 +109,14 @@
 }
 
 /* Front */
+
+/* allGraph */
+
+
+
+
+
+
 
 /* MiniData */
 

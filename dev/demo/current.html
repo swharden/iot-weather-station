@@ -14,25 +14,53 @@
         <h1>Current Readings</h1>
 
         <div>
-            Indoor: <span id="indoor">Loading...</span> ºF
+            Indoor: <span id="indoor">Loading...</span>
         </div>
         <div>
-            Outdoor: <span id="outdoor">Loading...</span> ºF
+            Outdoor: <span id="outdoor">Loading...</span>
         </div>
         <div>
-            Attic: <span id="attic">Loading...</span> ºF
+            Attic: <span id="attic">Loading...</span>
         </div>
+
+        <form class="my-3">
+            <input type="radio" id="fahrenheitRadio" checked name="units" onclick="updateAllLabels(false);" />
+            <label for="html" class="me-3">Fahrenheit</label>
+            <input type="radio" id="celsiusRadio" name="units" onclick="updateAllLabels(true);" />
+            <label for="html">Celsius</label>
+        </form>
 
     </div>
 
     <script>
+
+        function updateAllLabels(celsius) {
+            updateLabel("indoor", celsius);
+            updateLabel("outdoor", celsius);
+            updateLabel("attic", celsius);
+        }
+
+        function updateLabel(id, celsius) {
+            const el = document.getElementById(id);
+            const roundedTemperatureF = parseFloat(el.dataset.temperatureF);
+            const exactTemperatureC = (roundedTemperatureF - 32) / 9 * 5;
+            const roundedTemperatureC = Math.round(exactTemperatureC * 100) / 100;
+            el.innerHTML = celsius ? `${roundedTemperatureC} ºC` : `${roundedTemperatureF} ºF`;
+        }
+
+        function setValue(id, temperatureF) {
+            document.getElementById(id).dataset.temperatureF = temperatureF;
+            updateLabel(id);
+        }
+
         fetch("https://swharden.com/weather/v1/current/", { cache: "no-store" })
             .then(response => response.json())
             .then(data => {
-                document.getElementById("indoor").innerText = data.indoor.temperature;
-                document.getElementById("outdoor").innerText = data.outdoor.temperature;
-                document.getElementById("attic").innerText = data.attic.temperature;
+                setValue("indoor", data.indoor.temperature);
+                setValue("outdoor", data.outdoor.temperature);
+                setValue("attic", data.attic.temperature);
             });
+
     </script>
 </body>
 

@@ -16,7 +16,25 @@
 
 <body class="bodyBackground">
     <div class="container my-4">
-        <h1 class="headerTitle">Current Readings</h1>
+        <div>
+
+            <h1 class="headerTitle">Current Readings</h1>
+            <hr class="hr">
+        </div>
+
+        <div class="buttonRow">
+
+            <label class="radio">
+                <input name="radio" type="radio" checked>
+                <span>Fahrenheit</span>
+            </label>
+            <label class="radio">
+                <input name="radio" type="radio">
+                <span>Celsius</span>
+            </label>
+        </div>
+
+
 
         <div class="TempRow">
             <div class="TombTemp">
@@ -47,6 +65,20 @@
 
             </div>
         </div>
+        <!-- <div class="checkbox-wrapper-35">
+                <input class="switch" type="checkbox" id="switch" name="switch" value="private">
+                <label for="switch">
+                    <span class="switch-x-text">This is </span>
+                    <span class="switch-x-toggletext">
+                        <span class="switch-x-unchecked"><span
+                                class="switch-x-hiddenlabel">Unchecked:
+                            </span>ºF</span>
+                        <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked:
+                            </span>ºC</span>
+                    </span>
+                </label>
+            </div> -->
+
         <div class="quoteRow">
 
             <blockquote class="quoteTemp">“It is cold outside open a window”</blockquote>
@@ -57,7 +89,9 @@
 
 
         </div>
-
+        <h2 class="gitHubLink">Check out this project on&nbsp;<a
+                href="https://github.com/swharden/iot-weather-station">GitHub</a>!
+        </h2>
         <script>
             fetch("https://swharden.com/weather/v1/current/", { cache: "no-store" })
                 .then(response => response.json())

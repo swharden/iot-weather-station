@@ -26,6 +26,19 @@
     background-color: var(--colorone);
 }
 
+
+
+
+
+
+
+
+
+
+
+/*
+Body 
+*/
 .bodyBackground {
     background-image: linear-gradient(to bottom right, #FBFFFF, #BFD8E2);
     font-family: 'Quicksand', sans-serif;
@@ -34,12 +47,105 @@
 
 .headerTitle {
     display: flex;
-    font-size: 36px;
+    font-size: 48px;
     justify-content: center;
-    margin: 50px;
+    margin: 60px 60px 0px 60px;
 
 }
 
+.hr {
+    height: 5px;
+    background-color: var(--offblack);
+    opacity: 50%;
+    width: 30%;
+    border-radius: 5px;
+}
+
+.TempCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+
+
+/* buttons radio */
+
+.buttonRow {
+    display: flex;
+
+
+}
+
+
+.radio {
+    display: block;
+    cursor: pointer;
+    user-select: none;
+    text-align: left;
+    margin: 30px 30px 30px 30px;
+
+}
+
+
+.radio input {
+    display: none;
+}
+
+.radio input+span {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.radio input+span:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    background: #fff;
+    box-shadow: #bcbcc0 1px 1px 1px;
+}
+
+.radio input+span:after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: var(--offblack);
+    position: absolute;
+    border-radius: 50%;
+    top: 4px;
+    left: 4px;
+    opacity: 0;
+    transform: scale(0, 0);
+    transition: all .2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+.radio input:checked+span:after {
+    opacity: 1;
+    transform: scale(1, 1);
+}
+
+
+
+
+
+
+
+
+/*
+Temp 
+*/
 .TempRow {
     display: flex;
     justify-content: center;
@@ -57,9 +163,6 @@
         font-size: 20px;
     }
 }
-
-
-
 
 .circleTemp {
     height: 200px;
@@ -80,10 +183,18 @@
     max-height: 300px;
     border: white 5px solid;
     border-radius: 40% 40% 0% 0%;
-    margin: 20px;
-    box-shadow: #64646d 10px 10px 15px;
+    margin: 30px;
+    box-shadow: #9d9db2 10px 10px 15px;
 }
 
+
+
+
+
+
+/*
+    Quotes
+*/
 .quoteRow {
     display: flex;
     align-items: center;
@@ -102,7 +213,7 @@
     width: 250px;
     padding: 10px;
     background-color: white;
-    box-shadow: #767689 10px 10px 15px;
+    box-shadow: #9d9db2 5px 5px 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -115,7 +226,7 @@
     padding: 10px;
     margin: 10px;
     background-color: white;
-    box-shadow: #767689 10px 10px 15px;
+    box-shadow: #9d9db2 5px 5px 10px;
     border-radius: 50%;
     display: flex;
     align-self: end;
@@ -135,10 +246,17 @@
     }
 }
 
-
-
 .Img {
 
     height: 200px;
     width: 200px;
+}
+
+.gitHubLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--offblack);
+    margin: 100px;
+    font-size: 24px;
 }

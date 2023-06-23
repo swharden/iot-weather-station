@@ -16,49 +16,56 @@
 
 <body class="bodyBackground">
     <div class="container my-4">
-        <h1 class="headerTitle">Current Readings</h1>
+        <div>
+
+            <h1 class="headerTitle">Current Readings</h1>
+            <hr class="hr">
+        </div>
+
+        <div class="buttonRow">
+
+            <label class="radio">
+                <input name="radio" type="radio" checked>
+                <span>Fahrenheit</span>
+            </label>
+            <label class="radio">
+                <input name="radio" type="radio">
+                <span>Celsius</span>
+            </label>
+        </div>
 
 
 
+        <div class="TempRow">
+            <div class="TombTemp">
 
-        <!-- <button class="button-87" role="button">FreeDom</button>
-        <button class="button-64" role="button">
-            
-            <span class="text">Fahrenheit</span></button>
-        -->
+                <div class="circleTemp colorRed">
 
-        <div class="TempCol">
-
-            <div class="TempRow">
-                <div class="TombTemp">
-
-                    <div class="circleTemp colorRed">
-
-                        <h2><span id="indoor">Loading...</span>ºF</h2>
-                    </div>
-                    <h3>
-                        Indoor
-                    </h3>
+                    <h2><span id="indoor">Loading...</span>ºF</h2>
                 </div>
-                <div class="TombTemp">
-                    <div class="circleTemp colorGreen">
-                        <h2><span id="outdoor">Loading...</span> ºF</h2>
-                    </div>
-                    <h3>
-                        Outdoor
-                    </h3>
-                </div>
-                <div class="TombTemp">
-                    <div class="circleTemp colorBlue">
-                        <h2> <span id="attic">Loading...</span> ºF</h2>
-                    </div>
-                    <h3>
-                        Attic
-                    </h3>
-
-                </div>
+                <h3>
+                    Indoor
+                </h3>
             </div>
-            <div class="checkbox-wrapper-35">
+            <div class="TombTemp">
+                <div class="circleTemp colorGreen">
+                    <h2><span id="outdoor">Loading...</span> ºF</h2>
+                </div>
+                <h3>
+                    Outdoor
+                </h3>
+            </div>
+            <div class="TombTemp">
+                <div class="circleTemp colorBlue">
+                    <h2> <span id="attic">Loading...</span> ºF</h2>
+                </div>
+                <h3>
+                    Attic
+                </h3>
+
+            </div>
+        </div>
+        <!-- <div class="checkbox-wrapper-35">
                 <input class="switch" type="checkbox" id="switch" name="switch" value="private">
                 <label for="switch">
                     <span class="switch-x-text">This is </span>
@@ -70,8 +77,8 @@
                             </span>ºC</span>
                     </span>
                 </label>
-            </div>
-        </div>
+            </div> -->
+
         <div class="quoteRow">
 
             <blockquote class="quoteTemp">“It is cold outside open a window”</blockquote>
@@ -82,7 +89,7 @@
 
 
         </div>
-        <h2 class="gitHubLink">Check out this project on <a
+        <h2 class="gitHubLink">Check out this project on&nbsp;<a
                 href="https://github.com/swharden/iot-weather-station">GitHub</a>!
         </h2>
         <script>

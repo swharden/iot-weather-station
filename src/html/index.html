@@ -18,11 +18,60 @@
     <div class="container my-4">
         <h1 class="headerTitle">Current Readings</h1>
 
-        <!-- HTML !-->
-        <button class="button-87" role="button">FreeDom</button>
-        <!-- HTML !-->
-        <button class="button-64" role="button"><span class="text">Fahrenheit</span></button>
 
+
+
+        <!-- <button class="button-87" role="button">FreeDom</button>
+        <button class="button-64" role="button">
+            
+            <span class="text">Fahrenheit</span></button>
+        -->
+
+        <div class="TempCol">
+
+            <div class="TempRow">
+                <div class="TombTemp">
+
+                    <div class="circleTemp colorRed">
+
+                        <h2><span id="indoor">Loading...</span>ºF</h2>
+                    </div>
+                    <h3>
+                        Indoor
+                    </h3>
+                </div>
+                <div class="TombTemp">
+                    <div class="circleTemp colorGreen">
+                        <h2><span id="outdoor">Loading...</span> ºF</h2>
+                    </div>
+                    <h3>
+                        Outdoor
+                    </h3>
+                </div>
+                <div class="TombTemp">
+                    <div class="circleTemp colorBlue">
+                        <h2> <span id="attic">Loading...</span> ºF</h2>
+                    </div>
+                    <h3>
+                        Attic
+                    </h3>
+
+                </div>
+            </div>
+            <div class="checkbox-wrapper-35">
+                <input class="switch" type="checkbox" id="switch" name="switch" value="private">
+                <label for="switch">
+                    <span class="switch-x-text">This is </span>
+                    <span class="switch-x-toggletext">
+                        <span class="switch-x-unchecked"><span
+                                class="switch-x-hiddenlabel">Unchecked:
+                            </span>ºF</span>
+                        <span class="switch-x-checked"><span class="switch-x-hiddenlabel">Checked:
+                            </span>ºC</span>
+                    </span>
+                </label>
+            </div>
+        </div>
         <div class="quoteRow">
 
             <blockquote class="quoteTemp">“It is cold outside open a window”</blockquote>
@@ -32,36 +81,6 @@
             </div>
 
 
-        </div>
-
-        <div class="TempRow">
-            <div class="TombTemp">
-
-                <div class="circleTemp colorRed">
-
-                    <h2><span id="indoor">Loading...</span>ºF</h2>
-                </div>
-                <h3>
-                    Indoor
-                </h3>
-            </div>
-            <div class="TombTemp">
-                <div class="circleTemp colorGreen">
-                    <h2><span id="outdoor">Loading...</span> ºF</h2>
-                </div>
-                <h3>
-                    Outdoor
-                </h3>
-            </div>
-            <div class="TombTemp">
-                <div class="circleTemp colorBlue">
-                    <h2> <span id="attic">Loading...</span> ºF</h2>
-                </div>
-                <h3>
-                    Attic
-                </h3>
-
-            </div>
         </div>
         <h2 class="gitHubLink">Check out this project on <a
                 href="https://github.com/swharden/iot-weather-station">GitHub</a>!

@@ -43,7 +43,16 @@ Body
     background-image: linear-gradient(to bottom right, #FBFFFF, #BFD8E2);
     font-family: 'Quicksand', sans-serif;
     color: var(--offblack);
+
 }
+
+.centerTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 
 .headerTitle {
     display: flex;
@@ -74,7 +83,7 @@ Body
 
 .buttonRow {
     display: flex;
-
+    margin: 15px;
 
 }
 
@@ -137,6 +146,14 @@ Body
 }
 
 
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}
+
+.fade-in.fade-in-active {
+    opacity: 1;
+}
 
 
 

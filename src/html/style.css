@@ -155,7 +155,14 @@ Body
     opacity: 1;
 }
 
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.4s ease-in;
+}
 
+.fade-out.fade-out-active {
+    opacity: 1;
+}
 
 
 
@@ -274,6 +281,15 @@ Temp
     align-items: center;
     justify-content: center;
     color: var(--offblack);
-    margin: 100px;
+    margin-top: 100px;
     font-size: 24px;
+}
+
+.attributionLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--offblack);
+    margin: 50px;
+    font-size: 16px;
 }

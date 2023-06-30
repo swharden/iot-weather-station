@@ -217,12 +217,13 @@ Temp
 .TombTemp {
     background: linear-gradient(to bottom, #6A6884, #484759);
     padding: 50px;
-    max-width: 230px;
-    max-height: 300px;
+    max-width: 280px;
+    max-height: 350px;
     border: white 5px solid;
     border-radius: 40% 40% 0% 0%;
     margin: 30px;
     box-shadow: #9d9db2 10px 10px 15px;
+
 }
 
 

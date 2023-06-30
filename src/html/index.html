@@ -9,8 +9,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="icon" type="image/x-icon" href="/photos/sun.png">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -22,6 +20,8 @@
         href="https://unpkg.com/dygraphs@2.2.1/dist/dygraph.min.css" />
 
 
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="/photos/sun.png">
 
     <title>Weather</title>
 </head>
@@ -103,12 +103,6 @@
 
 
         </div>
-        <h2 class="gitHubLink">Check out this project on&nbsp;<a
-                href="https://github.com/swharden/iot-weather-station">GitHub</a>!
-        </h2>
-        <h5 class="attributionLink">Created by &nbsp;<a href="https://leahxinli.com/">Leah Xinli
-                Harden</a>!
-        </h5>
     </div>
 
 
@@ -116,28 +110,50 @@
 
     <!-- this is the graph part -->
 
-    <div class="d-flex justify-content-around my-5">
-        <button class="btn btn-primary" onclick="loadData(1)">Hour</button>
-        <button class="btn btn-primary" onclick="loadData(6)">Quarter</button>
-        <button class="btn btn-primary" onclick="loadData(24)">Day</button>
-        <button class="btn btn-primary" onclick="loadData(24*7)">Week</button>
-        <button class="btn btn-primary" onclick="loadData()">All</button>
+    <div class=" buttonRow my-5">
+        <button class="btn btn-primary buttonTemp" onclick="loadData(1)">Hour</button>
+        <button class="btn btn-primary buttonTemp" onclick="loadData(6)">Quarter</button>
+        <button class="btn btn-primary buttonTemp" onclick="loadData(24)">Day</button>
+        <button class="btn btn-primary buttonTemp" onclick="loadData(24*7)">Week</button>
+        <button class="btn btn-primary buttonTemp" onclick="loadData()">All</button>
     </div>
 
     <h2 class="mt-5">All Temp:</h2>
-    <div id="allTemp" class="w-100" style="height: 300px"></div>
+    <div class="graphBack">
+        <div id="allTemp" class="w-100" style="height: 300px"></div>
+    </div>
 
     <h2 class="mt-5">Indoor: <span id="indoor">Loading...</span> ºF</h2>
-    <div id="indoorTemp" class="w-100" style="height: 300px"></div>
+
+    <div class="graphBack">
+        <div id="indoorTemp" class="w-100" style="height: 300px"></div>
+    </div>
 
     <h2 class="mt-5">Outdoor: <span id="outdoor">Loading...</span> ºF</h2>
-    <div id="outdoorTemp" class="w-100" style="height: 300px"></div>
+    <div class="graphBack">
+
+        <div id="outdoorTemp" class="w-100" style="height: 300px"></div>
+    </div>
 
     <h2 class="mt-5">Attic: <span id="attic">Loading...</span> ºF</h2>
-    <div id="atticTemp" class="w-100" style="height: 300px"></div>
-
+    <div class="graphBack">
+        <div id="atticTemp" class="w-100" style="height: 300px"></div>
+    </div>
     <h2 class="mt-5">Pressure: <span id="pressure">Loading...</span> PSI</h2>
-    <div id="outdoorPressure" class="w-100" style="height: 300px"></div>
+
+    <div class="graphBack">
+
+        <div id="outdoorPressure" class="w-100" style="height: 300px">
+        </div>
+    </div>
+
+
+    <h2 class="gitHubLink">Check out this project on&nbsp;<a
+            href="https://github.com/swharden/iot-weather-station">GitHub</a>!
+    </h2>
+    <h5 class="attributionLink">Created by &nbsp;<a href="https://leahxinli.com/">Leah Xinli
+            Harden</a>!
+    </h5>
     </div>
 
 

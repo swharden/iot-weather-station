@@ -294,6 +294,54 @@ Temp
     width: 200px;
 }
 
+
+
+
+
+
+
+
+
+/* 
+    graphs
+*/
+
+.buttonRow {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.buttonTemp {
+    background-color: #342e57;
+    border: none;
+    width: 100px;
+    margin: 15px;
+}
+
+.buttonTemp:hover,
+.buttonTemp:focus {
+    background-color: #5a4ca0;
+}
+
+
+.graphBack {
+    background-color: white;
+
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px #9b99ab
+}
+
+
+
+
+
+
+/* 
+    gitHub and links 
+*/
+
 .gitHubLink {
     display: flex;
     align-items: center;

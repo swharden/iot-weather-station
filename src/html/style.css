@@ -242,7 +242,7 @@ Temp
     align-items: center;
     justify-content: center;
     color: var(--offblack);
-    margin: 50px;
+    margin: 70px;
 }
 
 
@@ -305,6 +305,7 @@ Temp
 /* 
     graphs
 */
+
 
 .buttonRow {
     display: flex;

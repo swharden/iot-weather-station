@@ -1,6 +1,6 @@
 # IoT Weather Station
 
-Wi-Fi weather station using [NodeMCU](https://en.wikipedia.org/wiki/NodeMCU) (a [ESP8266](https://en.wikipedia.org/wiki/ESP8266) development board) to read temperature and barometric pressure with a [BMP280](https://www.amazon.com/s?k=bmp280) and send it to a HTTP endpoint using PHP to log data.
+Wi-Fi weather station using [NodeMCU](https://en.wikipedia.org/wiki/NodeMCU) (a [ESP8266](https://en.wikipedia.org/wiki/ESP8266) development board) to read temperature and barometric pressure with a I2C [BMP280](https://www.amazon.com/s?k=bmp280) and send it to a HTTP endpoint using PHP to log data. This repository also contains code to use the simpler 1-Wire [DS18B20](https://www.analog.com/media/en/technical-documentation/data-sheets/ds18b20.pdf) thermometer.
 
 ## Live Data
 

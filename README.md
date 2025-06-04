@@ -33,22 +33,22 @@ View the realtime dashboard for thermometers running at my house:
 ![](dev/graphics/attic1.jpg)
 ![](dev/graphics/attic2.jpg)
 
-## Outdoor Sensor
+## Outdoor Sensor (Version 1)
 
 ![](dev/graphics/outdoor1.jpg)
 ![](dev/graphics/outdoor2.jpg)
 ![](dev/graphics/outdoor3.jpg)
 
-## Software
-* Microcontroller code (Arduino): [`src/firmware/`](src/firmware/)
-* HTTP backend (PHP): [`src/backend/`](src/backend/)
-* HTTP frontend (React): [`src/frontend/`](src/frontend/)
+## Outdoor Sensor (Version 2)
 
-## Resources
-* [C# Data Visualization](https://swharden.com/csdv/)
-* [ScottPlot.NET](https://scottplot.net)
-* [AVR Projects](https://github.com/swharden/AVR-projects) (GitHub)
+_After a couple years moisture damaged the BMP280 module from the original design, so this unit was constructed. It is housed indoors and has a DS18B20 digital sensor on a short length of wire that was passed through an opening in the wall._
 
-## Authors
-* Backend: Scott W Harden https://SWHarden.com
-* Frontend: Leah X Harden https://LeahXinli.com
+![](dev/graphics/outdoor2a.jpg)
+![](dev/graphics/outdoor2b.jpg)
+![](dev/graphics/outdoor2c.jpg)
+![](dev/graphics/outdoor2d.jpg)
+
+## Garage Sensor
+_The garage sensor is the same design as the outdoor sensor but with a shorter power cord and the temperature probe sticks out the top of the enclosure. The blue "light" is just a hole drilled in the enclosure with a frosted clear panel glued to the underside. It captures and diffuses the light naturally emitted by the NodeMCU's onboard LEDs._
+
+![](dev/graphics/garage.jpg)
